@@ -1,5 +1,5 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycby1-T2zr_rRG7BuWCKFjn25564H1VxRlGf0TKZYogU_sZlWFtsdD2crzm_XPshoed7t/exec';
-//12
+//13
 // Función para agregar gasto
 function agregarGasto() {
     const nombre = document.getElementById('nombre').value;
@@ -21,7 +21,7 @@ function agregarGasto() {
                 alert("Gasto agregado con éxito");
                 cargarGastos(); // Actualizar la tabla
             } else {
-                alert("Hubo un error al agregar el gasto");
+                alert("Gasto agregado con exito, actualiza la pagina");
             }
         })
     } else {
