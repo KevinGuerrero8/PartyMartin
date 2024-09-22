@@ -8,7 +8,7 @@ function agregarGasto() {
     if (nombre && gasto) {
         fetch(scriptURL, {
             method: 'POST',
-            mode: 'no-cors',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
             },
