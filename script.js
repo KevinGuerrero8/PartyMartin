@@ -1,5 +1,5 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycby1-T2zr_rRG7BuWCKFjn25564H1VxRlGf0TKZYogU_sZlWFtsdD2crzm_XPshoed7t/exec';
-//10
+//11
 // Función para agregar gasto
 function agregarGasto() {
     const nombre = document.getElementById('nombre').value;
@@ -27,10 +27,6 @@ function agregarGasto() {
                 alert("Hubo un error al agregar el gasto");
             }
         })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("Error en la solicitud");
-        });
     } else {
         alert("Por favor, completa todos los campos.");
     }
