@@ -9,6 +9,10 @@ function agregarGasto() {
         // Enviar datos a Google Sheets
         fetch(scriptURL, {
             method: 'POST',
+            mode: 'cors', // Asegúrate de que el modo esté establecido en 'cors'
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ nombre, gasto })
         })
         .then(response => {
@@ -18,6 +22,10 @@ function agregarGasto() {
             } else {
                 alert("Hubo un error al agregar el gasto");
             }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Hubo un error al agregar el gasto");
         });
     } else {
         alert("Por favor, completa todos los campos.");
