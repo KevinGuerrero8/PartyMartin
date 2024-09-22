@@ -1,14 +1,17 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzAyjvfaeEnvGN0V03JdSo_wo98vIQKbVI8ziBomqogDn6m-wBRm2qMFYJvY1xbWtEa0Q/exec'; // Sustituir con la URL generada por Google Apps Script
-
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzAyjvfaeEnvGN0V03JdSo_wo98vIQKbVI8ziBomqogDn6m-wBRm2qMFYJvY1xbWtEa0Q/exec';
+// .
 // Función para agregar gasto
 function agregarGasto() {
     const nombre = document.getElementById('nombre').value;
     const gasto = parseFloat(document.getElementById('gasto').value);
 
     if (nombre && gasto) {
-        // Enviar datos a Google Sheets
         fetch(scriptURL, {
             method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ nombre, gasto })
         })
         .then(response => {
@@ -18,6 +21,10 @@ function agregarGasto() {
             } else {
                 alert("Hubo un error al agregar el gasto");
             }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Error en la solicitud");
         });
     } else {
         alert("Por favor, completa todos los campos.");
@@ -27,7 +34,10 @@ function agregarGasto() {
 // Función para cargar los gastos desde Google Sheets
 function cargarGastos() {
     fetch(scriptURL)
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) throw new Error('Error en la carga de gastos');
+        return response.json();
+    })
     .then(data => {
         const tbody = document.querySelector("#tablaGastos tbody");
         tbody.innerHTML = '';
@@ -41,6 +51,9 @@ function cargarGastos() {
         });
 
         document.getElementById('totalGastado').innerText = `$${totalGastado.toFixed(2)}`;
+    })
+    .catch(error => {
+        console.error('Error al cargar gastos:', error);
     });
 }
 
