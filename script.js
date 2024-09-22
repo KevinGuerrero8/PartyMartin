@@ -1,5 +1,5 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycby1-T2zr_rRG7BuWCKFjn25564H1VxRlGf0TKZYogU_sZlWFtsdD2crzm_XPshoed7t/exec';
-//13
+//14
 // Función para agregar gasto
 function agregarGasto() {
     const nombre = document.getElementById('nombre').value;
