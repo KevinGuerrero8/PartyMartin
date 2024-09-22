@@ -8,11 +8,9 @@ function agregarGasto() {
     if (nombre && gasto) {
         // Enviar datos a Google Sheets
         fetch(scriptURL, {
-    method: 'POST',
-    mode: 'no-cors',
-    body: JSON.stringify({ nombre, gasto })
-});
-)
+            method: 'POST',
+            body: JSON.stringify({ nombre, gasto })
+        })
         .then(response => {
             if (response.ok) {
                 alert("Gasto agregado con éxito");
@@ -20,10 +18,6 @@ function agregarGasto() {
             } else {
                 alert("Hubo un error al agregar el gasto");
             }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("Hubo un error al agregar el gasto");
         });
     } else {
         alert("Por favor, completa todos los campos.");
@@ -57,3 +51,4 @@ function calcularDiferencias() {
 
 // Cargar los gastos cuando la página carga
 window.onload = cargarGastos;
+
