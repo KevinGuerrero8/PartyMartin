@@ -43,18 +43,21 @@ function cargarGastos() {
         let totalGastado = 0;
         data.forEach(gasto => {
             const row = document.createElement('tr');
-            // Suponiendo que `gasto` es un arreglo, cambia aquí
             row.innerHTML = `<td>${gasto[0] || 'Sin nombre'}</td><td>$${parseFloat(gasto[1] || 0).toFixed(2)}</td>`;
             tbody.appendChild(row);
             totalGastado += parseFloat(gasto[1] || 0);
         });
 
         document.getElementById('totalGastado').innerText = `$${totalGastado.toFixed(2)}`;
+        
+        // Llamar a calcularDiferencias después de cargar los gastos
+        calcularDiferencias(); 
     })
     .catch(error => {
         console.error('Error al cargar gastos:', error);
     });
 }
+
 
 // Función para calcular las diferencias
 function calcularDiferencias() {
