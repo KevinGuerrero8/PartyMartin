@@ -1,5 +1,5 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycbzAyjvfaeEnvGN0V03JdSo_wo98vIQKbVI8ziBomqogDn6m-wBRm2qMFYJvY1xbWtEa0Q/exec';
-// .
+
 // Función para agregar gasto
 function agregarGasto() {
     const nombre = document.getElementById('nombre').value;
@@ -8,7 +8,7 @@ function agregarGasto() {
     if (nombre && gasto) {
         fetch(scriptURL, {
             method: 'POST',
-            mode: 'cors',
+            mode: 'cors', // También puedes probar con 'no-cors' si sigue fallando
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -45,9 +45,9 @@ function cargarGastos() {
         let totalGastado = 0;
         data.forEach(gasto => {
             const row = document.createElement('tr');
-            row.innerHTML = `<td>${gasto[0]}</td><td>$${parseFloat(gasto[1]).toFixed(2)}</td>`;
+            row.innerHTML = `<td>${gasto.nombre}</td><td>$${parseFloat(gasto.gasto).toFixed(2)}</td>`;
             tbody.appendChild(row);
-            totalGastado += parseFloat(gasto[1]);
+            totalGastado += parseFloat(gasto.gasto);
         });
 
         document.getElementById('totalGastado').innerText = `$${totalGastado.toFixed(2)}`;
@@ -57,6 +57,7 @@ function cargarGastos() {
     });
 }
 
+// Función para calcular las diferencias
 function calcularDiferencias() {
     const totalPorPersona = parseFloat(document.getElementById('totalGastado').innerText.slice(1)) / document.querySelectorAll("#tablaGastos tbody tr").length;
     document.getElementById('totalPorPersona').innerText = `$${totalPorPersona.toFixed(2)}`;
