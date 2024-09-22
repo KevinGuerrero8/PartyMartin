@@ -1,5 +1,5 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycby1-T2zr_rRG7BuWCKFjn25564H1VxRlGf0TKZYogU_sZlWFtsdD2crzm_XPshoed7t/exec';
-//7
+//8
 // Función para agregar gasto
 function agregarGasto() {
     const nombre = document.getElementById('nombre').value;
@@ -10,7 +10,7 @@ function agregarGasto() {
     if (nombre && !isNaN(gasto)) {
         fetch(scriptURL, {
             method: 'POST',
-            mode: 'no-cors', // Cambia a 'no-cors' si sigue fallando
+            mode: 'cors', // Cambiado a 'cors'
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -33,7 +33,6 @@ function agregarGasto() {
     }
 }
 
-
 // Función para cargar los gastos desde Google Sheets
 function cargarGastos() {
     fetch(scriptURL)
@@ -48,9 +47,10 @@ function cargarGastos() {
         let totalGastado = 0;
         data.forEach(gasto => {
             const row = document.createElement('tr');
-            row.innerHTML = `<td>${gasto.nombre}</td><td>$${parseFloat(gasto.gasto).toFixed(2)}</td>`;
+            // Suponiendo que `gasto` es un arreglo, cambia aquí
+            row.innerHTML = `<td>${gasto[0] || 'Sin nombre'}</td><td>$${parseFloat(gasto[1] || 0).toFixed(2)}</td>`;
             tbody.appendChild(row);
-            totalGastado += parseFloat(gasto.gasto);
+            totalGastado += parseFloat(gasto[1] || 0);
         });
 
         document.getElementById('totalGastado').innerText = `$${totalGastado.toFixed(2)}`;
@@ -68,4 +68,5 @@ function calcularDiferencias() {
 
 // Cargar los gastos cuando la página carga
 window.onload = cargarGastos;
+
 
