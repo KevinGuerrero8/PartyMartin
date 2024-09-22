@@ -8,13 +8,11 @@ function agregarGasto() {
     if (nombre && gasto) {
         // Enviar datos a Google Sheets
         fetch(scriptURL, {
-            method: 'POST',
-            mode: 'cors', // Asegúrate de que el modo esté establecido en 'cors'
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ nombre, gasto })
-        })
+    method: 'POST',
+    mode: 'no-cors',
+    body: JSON.stringify({ nombre, gasto })
+});
+)
         .then(response => {
             if (response.ok) {
                 alert("Gasto agregado con éxito");
