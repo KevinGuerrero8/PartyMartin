@@ -1,5 +1,5 @@
 const scriptURL = 'https://script.google.com/macros/library/d/1-HK6heEVtZhRge1Cl-R41PbuSoMHOtnRL4T_jSHq20xDRiOYTeILA_OH/2';
-//...test
+//...
 // Función para agregar gasto
 function agregarGasto() {
     const nombre = document.getElementById('nombre').value;
@@ -8,7 +8,7 @@ function agregarGasto() {
     if (nombre && gasto) {
         fetch(scriptURL, {
             method: 'POST',
-            mode: 'cors', // También puedes probar con 'no-cors' si sigue fallando
+            mode: 'no-cors', // También puedes probar con 'no-cors' si sigue fallando
             headers: {
                 'Content-Type': 'application/json'
             },
