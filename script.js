@@ -1,4 +1,4 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzAyjvfaeEnvGN0V03JdSo_wo98vIQKbVI8ziBomqogDn6m-wBRm2qMFYJvY1xbWtEa0Q/exec'; // Sustituir con la URL generada por Google Apps Script
+const scriptURL = 'https://script.google.com/macros/library/d/1As6igBoCx_2VhCuqPPy5xjoTnzg9xs3BCWf9-4GXfTWcFvNqWpp7X7Dr/1'; // Sustituir con la URL generada por Google Apps Script
 
 // Función para agregar gasto
 function agregarGasto() {
