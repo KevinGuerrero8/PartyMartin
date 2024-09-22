@@ -10,7 +10,7 @@ function agregarGasto() {
         fetch(scriptURL, {
             method: 'POST',
             body: JSON.stringify({ nombre, gasto })
-        })
+        }
         .then(response => {
             if (response.ok) {
                 alert("Gasto agregado con éxito");
