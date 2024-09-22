@@ -51,4 +51,3 @@ function calcularDiferencias() {
 
 // Cargar los gastos cuando la página carga
 window.onload = cargarGastos;
-
