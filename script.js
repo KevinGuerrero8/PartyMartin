@@ -1,14 +1,16 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycby1-T2zr_rRG7BuWCKFjn25564H1VxRlGf0TKZYogU_sZlWFtsdD2crzm_XPshoed7t/exec';
-//5
+//6
 // Función para agregar gasto
 function agregarGasto() {
     const nombre = document.getElementById('nombre').value;
     const gasto = parseFloat(document.getElementById('gasto').value);
 
-    if (nombre && gasto) {
+    console.log(nombre, gasto); // Para verificar los valores
+
+    if (nombre && !isNaN(gasto)) {
         fetch(scriptURL, {
             method: 'POST',
-            mode: 'cors', // También puedes probar con 'no-cors' si sigue fallando
+            mode: 'cors', // Cambia a 'no-cors' si sigue fallando
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -30,6 +32,7 @@ function agregarGasto() {
         alert("Por favor, completa todos los campos.");
     }
 }
+
 
 // Función para cargar los gastos desde Google Sheets
 function cargarGastos() {
