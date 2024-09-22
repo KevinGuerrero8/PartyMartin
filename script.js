@@ -1,5 +1,5 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycby1-T2zr_rRG7BuWCKFjn25564H1VxRlGf0TKZYogU_sZlWFtsdD2crzm_XPshoed7t/exec';
-//8
+//9
 // Función para agregar gasto
 function agregarGasto() {
     const nombre = document.getElementById('nombre').value;
@@ -10,7 +10,7 @@ function agregarGasto() {
     if (nombre && !isNaN(gasto)) {
         fetch(scriptURL, {
             method: 'POST',
-            mode: 'cors', // Cambiado a 'cors'
+            mode: 'no-cors', // Cambiado a 'cors'
             headers: {
                 'Content-Type': 'application/json'
             },
