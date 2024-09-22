@@ -16,8 +16,11 @@ function agregarGasto() {
             },
             body: JSON.stringify({ nombre, gasto })
         })
-        .then(response => {
-            if (response.ok) {
+    .then(response => {
+            return response.json(); // Asegúrate de analizar la respuesta JSON
+        })
+        .then(data => {
+            if (data.status === 'success') { // Cambiado para verificar el contenido
                 alert("Gasto agregado con éxito");
                 cargarGastos(); // Actualizar la tabla
             } else {
