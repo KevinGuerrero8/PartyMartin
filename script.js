@@ -1,5 +1,5 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycby1-T2zr_rRG7BuWCKFjn25564H1VxRlGf0TKZYogU_sZlWFtsdD2crzm_XPshoed7t/exec';
-//3
+const scriptURL = 'https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycby1-T2zr_rRG7BuWCKFjn25564H1VxRlGf0TKZYogU_sZlWFtsdD2crzm_XPshoed7t/exec';
+//4
 // Función para agregar gasto
 function agregarGasto() {
     const nombre = document.getElementById('nombre').value;
@@ -8,7 +8,7 @@ function agregarGasto() {
     if (nombre && gasto) {
         fetch(scriptURL, {
             method: 'POST',
-            mode: 'no-cors', // También puedes probar con 'no-cors' si sigue fallando
+            mode: 'cors', // También puedes probar con 'no-cors' si sigue fallando
             headers: {
                 'Content-Type': 'application/json'
             },
